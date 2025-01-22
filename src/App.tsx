@@ -7,18 +7,20 @@
 
 import React from 'react';
 import {
-  Pressable,
+
   SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
-  Text,
-  TextInput,
+
   useColorScheme,
   View,
 } from 'react-native';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
+import './global.css';
+
+import LoginForm from './component/auth/LoginForm';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -28,7 +30,7 @@ function App(): React.JSX.Element {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
+    <SafeAreaView style={[backgroundStyle, styles.container]}>
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
@@ -37,11 +39,15 @@ function App(): React.JSX.Element {
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
         <View style={styles.sectionContainer}>
-          <View style={styles.inputBox}>
+          {/* <View style={styles.inputBox}>
             <TextInput style={styles.input} placeholder="Enter your name" />
             <Pressable>
               <Text style={styles.highlight}>Submit</Text>
             </Pressable>
+          </View> */}
+
+          <View className="mt-10">
+            <LoginForm />
           </View>
         </View>
       </ScrollView>
@@ -50,8 +56,11 @@ function App(): React.JSX.Element {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   sectionContainer: {
-    marginTop: 32,
+    // marginTop: 32,
     paddingHorizontal: 24,
   },
   sectionTitle: {
